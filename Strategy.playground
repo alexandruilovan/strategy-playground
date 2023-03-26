@@ -1,0 +1,33 @@
+protocol JumpStrategy {
+    func jump()
+}
+
+class ShortJump: JumpStrategy {
+    func jump() {
+        print("Short Jump")
+    }
+}
+
+class LongJump: JumpStrategy {
+    func jump() {
+        print("Long Jump")
+    }
+}
+
+class Character {
+    var jumpStrategy: JumpStrategy
+    
+    init(jumpStrategy: JumpStrategy) {
+        self.jumpStrategy = jumpStrategy
+    }
+    
+    func jump() {
+        jumpStrategy.jump()
+    }
+}
+
+let character = Character(jumpStrategy: ShortJump())
+character.jump()
+
+character.jumpStrategy = LongJump()
+character.jump()
